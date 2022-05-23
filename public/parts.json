@@ -1,0 +1,20 @@
+[
+    {
+        "_id": 1,
+        "name": "HubCap",
+        "description": "",
+        "img":"https://images.unsplash.com/photo-1591117728047-2dc00780492c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387"
+    },
+    {
+        "_id": 2,
+        "name": "Spoiler",
+        "description": "",
+        "img":"https://images.unsplash.com/photo-1614450934643-c770b05c2c03?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387"
+    },
+    {
+        "_id": 3,
+        "name": "Hood",
+        "description": "",
+        "img":"https://images.unsplash.com/photo-1536097034419-44e1acffc7f0?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387"
+    }
+]
