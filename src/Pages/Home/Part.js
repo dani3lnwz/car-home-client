@@ -21,14 +21,13 @@
 // export default Part;
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import PrimaryButton from './../Shared/PrimaryButton';
 
 const Part = ({part}) => {
-    const {_id, name, img} = part;
+    const {_id, name, img, price, quantity, minimumOrder} = part;
 
     const navigate = useNavigate();
     const navigateToPurchase = id => {
-        navigate(`/part/${id}`);
+        navigate(`/purchase/${id}`);
     }
 
     return (
@@ -36,7 +35,10 @@ const Part = ({part}) => {
             <div className='card-body'>
                 <img src={img} alt="" />
                 <h2 className='card-title'>{name}</h2>
-                {/* <PrimaryButton>Purchase</PrimaryButton> */}
+                <p>Price: {price}</p>
+                <p>Quantity: {quantity}</p>
+                <p>MinimumOrder: {minimumOrder}</p>
+
                 <button onClick={() => navigateToPurchase(_id)} className="btn btn-primary text-white">Order Now</button>
             </div>
             

@@ -47,11 +47,11 @@
 // };
 
 // export default Parts;
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react';
 import Part from './Part';
 
-const Parts = ({data}) => {
+const Parts = ( ) => {
     const [parts, setParts] = useState([]);
     useEffect ( () => {
         fetch('http://localhost:5000/part')
