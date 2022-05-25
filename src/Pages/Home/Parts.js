@@ -51,7 +51,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Part from './Part';
 
-const Parts = ( ) => {
+const Parts = () => {
     const [parts, setParts] = useState([]);
     useEffect ( () => {
         fetch('http://localhost:5000/part')
@@ -64,7 +64,7 @@ const Parts = ( ) => {
             <h4 className='text-xl text-secondary text-center'> Available parts</h4>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
-                    parts.map(part => <Part
+                    parts.slice(parts.length-3, parts.length).map(part => <Part
                     key={part._id}
                     part={part}
                     ></Part>)
