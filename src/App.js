@@ -17,6 +17,7 @@ import AddPart from './Pages/Dashboard/AddPart';
 import ManageParts from './Pages/Dashboard/ManageParts';
 import Payment from './Pages/Dashboard/Payment';
 import PageNotFound from './Pages/Shared/PageNotFound';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path='managePart' element={<RequireAdmin><ManageParts></ManageParts></RequireAdmin>}></Route>
         </Route>
         <Route path='about' element={<About />} />
+        <Route path='blogs' element={<Blogs />} />
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<SignUp />} />
         <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
