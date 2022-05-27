@@ -24,7 +24,8 @@ const BookingModal = ({setConfirmOrder}) => {
         const booking = {
             partId: _id,
             partName: name,
-            partPrice: price,
+            // partPrice: price,
+            price,
             partOrder: placeOrder,
             buyer: user.email,
             buyerName: user.displayName
