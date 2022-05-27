@@ -4,31 +4,38 @@ import people1 from '../../assets/people1.png';
 import people2 from '../../assets/people2.png';
 import people3 from '../../assets/people3.png';
 import Review from './Review';
+import { useEffect, useState } from 'react';
 
 const Testimonial = () => {
-    const reviews = [
-        {
-            _id:1,
-            name: 'Winson Herry',
-            review: '',
-            location: 'california',
-            img:people1
-        },
-        {
-            _id:2,
-            name: 'Winson Herry',
-            review: '',
-            location: 'california',
-            img:people2
-        },
-        {
-            _id:3,
-            name: 'Winson Herry',
-            review: '',
-            location: 'california',
-            img:people3
-        },
-    ];
+    // const reviews = [
+    //     {
+    //         _id:1,
+    //         name: 'Winson Herry',
+    //         review: '',
+    //         location: 'california',
+    //         img:people1
+    //     },
+    //     {
+    //         _id:2,
+    //         name: 'Winson Herry',
+    //         review: '',
+    //         location: 'california',
+    //         img:people2
+    //     },
+    //     {
+    //         _id:3,
+    //         name: 'Winson Herry',
+    //         review: '',
+    //         location: 'california',
+    //         img:people3
+    //     },
+    // ];
+    const [testimonial, setTestimonial] = useState([]);
+    useEffect ( () => {
+        fetch('http://localhost:5000/review')
+        .then(res => res.json())
+        .then(data => setTestimonial(data)); 
+    }, [])
     return (
         <section className='my-28'>
             <div className='flex justify-between'>
@@ -42,7 +49,9 @@ const Testimonial = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
-                    reviews.map(review => <Review
+                    testimonial
+                    // .slice(testimonial.length-3, testimonial.length)
+                    .map(review => <Review
                     key={review._id}
                     review={review}
                     ></Review>)
