@@ -7,10 +7,11 @@ const CheckoutForm = ({o}) => {
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
+    const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
-    const {price, partName, buyer} = o;
+    const {_id, price, partName, buyer} = o;
 
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent',{
@@ -48,7 +49,7 @@ const CheckoutForm = ({o}) => {
 
             setCardError(error?.message || '')
             setSuccess('');
-        
+            setProcessing(true);
             // confirm card payment
             const {paymentIntent, error: intentError} = await stripe.confirmCardPayment(
                 clientSecret,
@@ -63,7 +64,8 @@ const CheckoutForm = ({o}) => {
                 },
             );
             if(intentError){
-                setCardError(intentError?.message)
+                setCardError(intentError?.message);
+                setProcessing(false);
                 
             }
             else{
@@ -71,6 +73,23 @@ const CheckoutForm = ({o}) => {
                 setTransactionId(paymentIntent.id);
                 console.log(paymentIntent);
                 setSuccess('Congrats! Your Payment is completed.')
+                // store payment on database
+                const payment = {
+                    o : _id,
+                    transactionId: paymentIntent.id
+                }
+                fetch(`http://localhost:5000/booking/${_id}`,{
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(payment)
+                }).then(res=>res.json())
+                .then(data => {
+                    setProcessing(false);
+                    console.log(data)
+                })
             }
 
     }
@@ -93,7 +112,7 @@ const CheckoutForm = ({o}) => {
                 },
             }}
         />
-        <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret}>
+        <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret || success}>
             Pay
         </button>
     </form>
