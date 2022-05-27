@@ -16,6 +16,7 @@ import RequireAdmin from './Pages/Login/RequireAdmin';
 import AddPart from './Pages/Dashboard/AddPart';
 import ManageParts from './Pages/Dashboard/ManageParts';
 import Payment from './Pages/Dashboard/Payment';
+import PageNotFound from './Pages/Shared/PageNotFound';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='about' element={<About />} />
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<SignUp />} />
+        <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
       </Routes>
     </div>
   );
