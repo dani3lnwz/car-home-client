@@ -28,7 +28,7 @@ const AddPart = () => {
                     price: data.price,
                     img: img
                 }
-                fetch('http://localhost:5000/part', {
+                fetch('https://calm-everglades-69368.herokuapp.com/part', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

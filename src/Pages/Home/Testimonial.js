@@ -32,7 +32,7 @@ const Testimonial = () => {
     // ];
     const [testimonial, setTestimonial] = useState([]);
     useEffect ( () => {
-        fetch('http://localhost:5000/review')
+        fetch('https://calm-everglades-69368.herokuapp.com/review')
         .then(res => res.json())
         .then(data => setTestimonial(data)); 
     }, [])

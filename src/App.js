@@ -18,8 +18,13 @@ import ManageParts from './Pages/Dashboard/ManageParts';
 import Payment from './Pages/Dashboard/Payment';
 import PageNotFound from './Pages/Shared/PageNotFound';
 import Blogs from './Pages/Blogs/Blogs';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './firebase.init';
+import useAdmin from './hooks/useAdmin';
 
 function App() {
+  const [user] = useAuthState(auth);
+    const [admin] = useAdmin(user);
   return (
     <div className='max-w-7xl mx-auto px-12'>
       <Navbar></Navbar>
@@ -35,10 +40,14 @@ function App() {
             <Dashboard />
           </RequireAuth>
         } >
-          <Route index element={<MyOrders></MyOrders>}></Route>
+          {!admin && <>
+            <Route path='order' element={<MyOrders></MyOrders>}></Route>
           <Route path='review' element={<MyReview></MyReview>}></Route>
-          <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
+          </>}
+          
+          <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
+          
           <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
           <Route path='addPart' element={<RequireAdmin><AddPart></AddPart></RequireAdmin>}></Route>
           <Route path='managePart' element={<RequireAdmin><ManageParts></ManageParts></RequireAdmin>}></Route>

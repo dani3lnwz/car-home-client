@@ -8,7 +8,7 @@ const ManageParts = () => {
 
     const [deletingPart, setDeletingPart] = useState(null);
 
-    const { data: parts, isLoading, refetch } = useQuery('parts', () => fetch('http://localhost:5000/part', {
+    const { data: parts, isLoading, refetch } = useQuery('parts', () => fetch('https://calm-everglades-69368.herokuapp.com/part', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

@@ -26,7 +26,7 @@ const MyReview = () => {
                     rating: data.rating,
                     img: img
                 }
-                fetch('http://localhost:5000/review', {
+                fetch('https://calm-everglades-69368.herokuapp.com/review', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -91,7 +91,7 @@ const MyReview = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
                     </label>
                 </div>
                 {/* location*/}
@@ -130,7 +130,7 @@ const MyReview = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.img?.type === 'required' && <span className="label-text-alt text-red-500">{errors.img.message}</span>}
                     </label>
                 </div>
                 <input className='btn w-full max-w-xs' type="submit" value="ADD" />
